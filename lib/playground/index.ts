@@ -333,7 +333,7 @@ export class Playground extends Construct {
   }) {
     const apiHandler = new lambdaPython.PythonFunction(this, "ApiHandler", {
       entry: path.join(__dirname, "./functions/api-handler"),
-      runtime: lambda.Runtime.PYTHON_3_12,
+      runtime: lambda.Runtime.PYTHON_3_13,
       architecture: lambdaArchitecture,
       timeout: cdk.Duration.minutes(5),
       memorySize: 128,
@@ -452,7 +452,7 @@ export class Playground extends Construct {
           path.join(__dirname, "./functions/connection-handler")
         ),
         handler: "index.handler",
-        runtime: lambda.Runtime.PYTHON_3_12,
+        runtime: lambda.Runtime.PYTHON_3_13,
         architecture: lambdaArchitecture,
         layers: [powerToolsLayer],
         environment: {
@@ -468,7 +468,7 @@ export class Playground extends Construct {
         path.join(__dirname, "./functions/authorizer")
       ),
       handler: "index.handler",
-      runtime: lambda.Runtime.PYTHON_3_12,
+      runtime: lambda.Runtime.PYTHON_3_13,
       architecture: lambdaArchitecture,
       layers: [powerToolsLayer],
     });
@@ -506,7 +506,7 @@ export class Playground extends Construct {
       "MessageHandler",
       {
         entry: path.join(__dirname, "./functions/message-handler"),
-        runtime: lambda.Runtime.PYTHON_3_12,
+        runtime: lambda.Runtime.PYTHON_3_13,
         architecture: lambdaArchitecture,
         layers: [powerToolsLayer],
         timeout: cdk.Duration.minutes(15),

@@ -21,7 +21,7 @@ Visualise data in the file
 ```
 ![sample](./assets/screen05.png "Screenshot")
 ```
-Create a tree.js rotating cube
+Create a Three.js rotating cube
 ```
 ![sample](./assets/screen06.png "Screenshot")
 ```

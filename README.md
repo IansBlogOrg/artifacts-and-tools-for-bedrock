@@ -22,7 +22,6 @@ This sample offers an innovative chat-based user interface with support for tool
 | Artifacts        | Content and App Visualization | Available |
 | Code Interpreter | Running code to accomplish tasks | Available |
 | Web Search       | Using the Brave Search API to retrieve data | Available |
-| SQL Client       | Accessing Amazon RDS databases to retrieve data | Coming soon  |
 
 ### Sample queries
 ```
@@ -45,7 +44,7 @@ Before deploying the solution, make sure the configuration in ``bin/artifacts-an
 ```js
 {
   bedrockRegion: "us-east-1",
-  bedrockModel: "anthropic.claude-3-5-sonnet-20240620-v1:0",
+  bedrockModel: "amazon.nova-pro-v1:0",
   playground: {
     enabled: true,
   },

@@ -18,7 +18,6 @@ ARTIFACTS_ENABLED = os.environ.get("ARTIFACTS_ENABLED")
 TOOL_CODE_INTERPRETER = os.environ.get("TOOL_CODE_INTERPRETER")
 TOOL_WEB_SEARCH = os.environ.get("TOOL_WEB_SEARCH")
 
-
 s3_client = boto3.client(
     "s3", region_name=AWS_REGION, endpoint_url=f"https://s3.{AWS_REGION}.amazonaws.com"
 )
@@ -51,7 +50,7 @@ def handle_message(logger, connection_id, user_id, body):
             raise ValueError("Session ID is required")
 
         if event_type == "HEARTBEAT":
-            sender.send_heartbeat()
+            sender.send_heartbeat(BEDROCK_MODEL)
         elif event_type == "CONVERSE":
             files = body.get("files", [])
             message = body.get("message")
@@ -123,7 +122,9 @@ def converse_make_request_stream(
     files,
 ):
     file_names = [os.path.basename(file["file_name"]) for file in files]
-    system = system_messages(ARTIFACTS_ENABLED == "1", file_names)
+    system = system_messages(
+        ARTIFACTS_ENABLED == "1", s3_client, user_id, session_id, file_names
+    )
 
     additional_params = {}
     if tool_config:

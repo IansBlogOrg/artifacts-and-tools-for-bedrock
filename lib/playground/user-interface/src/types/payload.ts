@@ -26,36 +26,37 @@ export interface InboundFrame {
 }
 
 export type InboundPayload =
-  | InboutPayloadError
-  | InboutPayloadLoop
-  | InboutPayloadTextChunk
-  | InboutPayloadToolUse;
+  | InboundPayloadHeartbeat
+  | InboundPayloadError
+  | InboundPayloadLoop
+  | InboundPayloadTextChunk
+  | InboundPayloadToolUse;
 
-export interface InboutPayloadHeartbeat {
+export interface InboundPayloadHeartbeat {
   event_type: InboundEventType.HEARTBEAT;
   sequence_idx: number;
   payload: unknown;
 }
 
-export interface InboutPayloadError {
+export interface InboundPayloadError {
   event_type: InboundEventType.ERROR;
   sequence_idx: number;
   error: string;
 }
 
-export interface InboutPayloadLoop {
+export interface InboundPayloadLoop {
   event_type: InboundEventType.LOOP;
   sequence_idx: number;
   finish: boolean;
 }
 
-export interface InboutPayloadTextChunk {
+export interface InboundPayloadTextChunk {
   event_type: InboundEventType.TEXT_CHUNK;
   sequence_idx: number;
   text: string;
 }
 
-export interface InboutPayloadToolUse {
+export interface InboundPayloadToolUse {
   event_type: InboundEventType.TOOL_USE;
   sequence_idx: number;
   tool_use_id: string;

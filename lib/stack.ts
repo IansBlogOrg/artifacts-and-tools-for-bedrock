@@ -121,7 +121,7 @@ export class ArtifactsAndToolsStack extends cdk.Stack {
           ),
           architecture: lambdaArchitecture,
           timeout: cdk.Duration.minutes(15),
-          memorySize: 2048,
+          memorySize: 4096,
           logGroup: codeInterpreterLogGroup,
           vpc: codeInterpreterVpc,
           vpcSubnets: {

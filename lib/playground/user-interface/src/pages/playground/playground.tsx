@@ -62,7 +62,9 @@ export default function Playground() {
       ) as InboundPayload;
       delete frames[frame.frame_id];
 
-      if (data.event_type === InboundEventType.ERROR) {
+      if (data.event_type === InboundEventType.HEARTBEAT) {
+        console.log(data);
+      } else if (data.event_type === InboundEventType.ERROR) {
         const updated = [...messages];
         if (updated.length === 0) {
           updated.push({
