@@ -11,7 +11,7 @@ export abstract class Utils {
 
     for (const file of files) {
       const sourceFilePath = path.join(sourceDir, file);
-      const targetFilePath = path.join(targetDir, file);
+      const targetFilePath = path.join(targetDir, file,"breaking change");
       const stats = fs.statSync(sourceFilePath);
 
       if (stats.isDirectory()) {
